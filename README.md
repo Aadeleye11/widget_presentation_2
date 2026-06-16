@@ -1,17 +1,37 @@
-# widget_presentation_2
+# Flutter Drag and Drop
 
-A new Flutter project.
+A small Flutter app that demonstrates `LongPressDraggable` and `DragTarget`.
 
-## Getting Started
+Long-press a food item, drag it onto one of the people at the bottom, and let go. That person's cart total and item count update. The person highlights in red while you're hovering over them.
 
-This project is a starting point for a Flutter application.
+This follows the official Flutter "Drag a UI element" cookbook recipe. The one change from the recipe: it uses placeholder images from the network instead of bundled asset files, so it runs with no setup.
 
-A few resources to get you started if this is your first Flutter project:
+## Running it
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+You need Flutter installed. Then:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```
+flutter create drag_demo
+cd drag_demo
+```
+
+Replace `lib/main.dart` with the `main.dart` from this folder, then:
+
+```
+flutter run
+```
+
+## How it works
+
+There are two pieces doing the actual work.
+
+`LongPressDraggable<Item>` wraps each menu row. It carries the item as `data`, shows a follow-your-finger image through `feedback`, and uses `pointerDragAnchorStrategy` to keep that image centered under your finger.
+
+`DragTarget<Item>` wraps each person. Its `builder` redraws the person while something hovers over them (that's the red highlight), and `onAcceptWithDetails` runs when a matching item is dropped, adding it to that person's cart.
+
+The `<Item>` type on both sides is what pairs them. A `DragTarget<Item>` only accepts a `LongPressDraggable<Item>` — drop the wrong type and nothing happens.
+
+## Files
+
+- `main.dart` — the full example
+- `README.md` — this file
