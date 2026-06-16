@@ -35,3 +35,7 @@ The `<Item>` type on both sides is what pairs them. A `DragTarget<Item>` only ac
 
 - `main.dart` — the full example
 - `README.md` — this file
+
+## Screenshot of the final UI
+
+<img width="615" height="757" alt="image" src="https://github.com/user-attachments/assets/cc5f1d7a-0d87-4bb1-aec7-139922ef1328" />
